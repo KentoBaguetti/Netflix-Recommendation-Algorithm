@@ -70,6 +70,7 @@ def movies_filtred(watched_movies_list):
     movie_df_7up_ratings = movie_df_7up_ratings[~movie_df_7up_ratings["title"].str.lower().isin(watched_movies_list)]
     return movie_df_7up_ratings.reset_index(drop=True)
 
+# Returns a list of five titles that match your genre preferences
 def recommend_movies(fav_genres, sorted_movies):
     good_movies = pd.DataFrame()
     for genre in fav_genres:
@@ -80,6 +81,7 @@ def recommend_movies(fav_genres, sorted_movies):
         top_5_titles.append(good_movies.iloc[i,0])
     return top_5_titles
 
+# Prints out the five titles from the recommend_movies() function
 def display_recommended_titles(top_5_list):
     print("Top 5 Movies to Watch")
     print("----------------------------")
