@@ -4,14 +4,14 @@ movie_df = pd.read_csv("movies_with_ratings.csv").drop_duplicates(subset="title"
 
 # Checks if the argument title is in the data set of titles
 def is_valid_movie_name(movie_title):
-    for title in movie_df["title"]:
+    for title in movie_df["title"].str.lower():
         if movie_title == title:
             return True
     return False
 
 # Locates the index of the title in the data set
 def locate_movie_row(movie_title):
-    index = movie_df.index[movie_df['title'] == movie_title]
+    index = movie_df.index[movie_df['title'].str.lower() == movie_title]
     return index[0]
 
 # Returns the genres of a certain title in a list
@@ -26,7 +26,7 @@ def get_genres(movie_title):
 def watched_movies():
     watched_titles = []
     while True:
-        user_input = input("Enter a title you've watched or enter \"0x0\" to exit: ")
+        user_input = input("Enter a title you've watched or enter \"0x0\" to exit: ").lower()
         if user_input == "0x0":
             break
         else:
@@ -67,7 +67,7 @@ def sort_genres(genre_dict):
 # Returns a data set of the titles that have not been watched by the user and are rated over 7.0
 def movies_filtred(watched_movies_list):
     movie_df_7up_ratings = movie_df[movie_df["rating"] >= 7.0].reset_index(drop=True)
-    movie_df_7up_ratings = movie_df_7up_ratings[~movie_df_7up_ratings["title"].isin(watched_movies_list)]
+    movie_df_7up_ratings = movie_df_7up_ratings[~movie_df_7up_ratings["title"].str.lower().isin(watched_movies_list)]
     return movie_df_7up_ratings.reset_index(drop=True)
 
 def recommend_movies(fav_genres, sorted_movies):
@@ -87,4 +87,4 @@ def display_recommended_titles(top_5_list):
         print(title)
     print("----------------------------")
         
-        
+
