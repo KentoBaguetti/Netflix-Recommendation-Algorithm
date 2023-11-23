@@ -4,7 +4,7 @@ Displays the top five movies based on the genres the user likes.
 
 How it works:
 
-  1. The CSV file containing information on Netflix titles such as title name, year of release, ratings, actors, description is turned
+  1. The CSV file containing information on Netflix titles such as title name, year of release, ratings, actors, and description is turned
      into a data frame using pandas, at the same time clearing any duplicates.
 
   2. The first function called is watched_movies(), which asks the users for the Netflix titles they have watched and stores them in a list. The method
@@ -20,3 +20,8 @@ How it works:
   6. Finally, the recommend_movies() function takes the user's favourite genres and returns a list of five titles the user should watch
 
 This program uses collaborative filtering to recommend movies.
+
+What I learned from this project:
+  1. How to use the PANDAS module
+  2. Improved my efficiency by creating separate functions for certain tasks to reduce repetition
+  3. Improved my skill with simple data structures such as Dictionaries.
